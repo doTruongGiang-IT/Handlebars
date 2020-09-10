@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handlebarsjs</title>
+    <script src="assets/jquery-3.5.1.js"></script>
+    <script src="assets/handlebars-v4.7.6.js"></script>
+    <style>
+        .list_character {
+            list-style: none;
+        }
+
+        #redtext {
+            color: red;
+        }
+
+        #greentext {
+            color: green;
+        }
+
+        #bluetext {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1><center>BIG BANG THEORY</center></h1>
+    <div id="with-contain"></div>
+    <div id="contain"></div>
+    <ul class="list_character"></ul>
+
+    <script id="with-helper" type="text/x-handlebars-template">
+        <div id="tech">
+            <h3>{{name}}</h3>
+            {{#with techdata}}
+                <p class="isbn">{{{isbn}}</p>
+                <p class="author">{{author}}</p>
+            {{/with}}
+        </div>
+    </script>
+
+    <script id="block-helper" type="text/x-handlebars-template">
+        {{#makeRadio "size"}}
+            Small, Medium, Lagre
+        {{/makeRadio}}
+
+        {{#areEqual 4 4}}
+            Numbers are equal
+            {{else}}
+            Numbers are not equal
+        {{/areEqual}}<br />
+
+        {{#if 'isActive'}}
+            <b>You are a genious</br>
+        {{else}}
+            <b>You are a fool</b>
+        {{/if}}
+    </script>
+
+    <script id="character-template" type="text/x-handlebars-template">
+        {{makeLink "FullStack is posible" "https://fullstack.edu.vn/"}}<br /><br />
+
+        {{changeColor "Do Truong Giang" color="red"}}<br /><br />
+
+        {{sayHello}}<br /><br />
+
+        {{#each characters}}
+            <li class="character">
+                <img src="{{image}}" alt="">
+                <h2>{{@index}}: {{name}}</h2>
+                <p>Actor: {{actor}}</p>
+                <p>Gender: {{gender}}</p>
+                {{#if nickname}}
+                    <p>Nickname: {{nickname}}</p>
+                {{/if}}    
+                {{#unless nickname}}
+                    <p>Nickname: unknown ......</p>
+                {{/unless}}
+                {{#with block}}
+                    {{#if phone}}<p>Phone: {{formatPhoneNumber phone}}</p>{{/if}}
+                    {{#if address}}<p>Address: {{address}}</p>{{/if}}
+                {{/with}}
+            </li>
+        {{/each}}
+    </script>
+
+    <script src="assets/main.js"></script>
+</body>
+</html>

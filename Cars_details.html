@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test API</title>
+    <script src="assets/jquery-3.5.1.js"></script>
+    <script src="assets/handlebars-v4.7.6.js"></script>
+    <style>
+        ul li {
+            list-style: none;
+            display: inline-block;
+            width: 32%;
+            margin: 10px 5px; 
+        }
+
+        .details {
+            text-decoration: none;
+            padding: 3px 9px;
+            border: 1px solid silver;
+            background-color: palegreen;
+            color: red;
+        }
+
+        .product img {
+            width: 50%;
+            height: 450px;
+        }
+    </style>
+</head>
+<body class="carDetails">
+    <div id="container">
+        <section id="list-products"></section>
+    </div>
+
+    <script id="products-template" type="text/x-handlebars-template">
+        <div class="product">
+            <img src="{{image}}">
+            <h2>{{#toUpper}} {{name}} {{/toUpper}}</h2>
+            <p>{{price}}</p>
+            <a href="testApiWithHandlebars.html" class="details">Back</a>
+        </div>
+        <div class="cars-detail">
+            <p>{{#makeBold}} {{brief}} {{/makeBold}}</p>
+        </div>
+    </script>
+
+    <script src="assets/api.js"></script>
+</body>
+</html>
